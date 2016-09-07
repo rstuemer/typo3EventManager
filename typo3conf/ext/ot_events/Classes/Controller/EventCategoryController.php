@@ -25,11 +25,12 @@ namespace OliverThiele\OtEvents\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * EventCategoryController
  */
-class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventCategoryController extends ActionController
 {
 
     /**
@@ -39,7 +40,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
      * @inject
      */
     protected $eventCategoryRepository = NULL;
-    
+
     /**
      * action list
      *
@@ -50,7 +51,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $eventCategories = $this->eventCategoryRepository->findAll();
         $this->view->assign('eventCategories', $eventCategories);
     }
-    
+
     /**
      * action show
      *
@@ -61,7 +62,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     {
         $this->view->assign('eventCategory', $eventCategory);
     }
-    
+
     /**
      * action new
      *
@@ -69,9 +70,9 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
      */
     public function newAction()
     {
-        
+
     }
-    
+
     /**
      * action create
      *
@@ -84,7 +85,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $this->eventCategoryRepository->add($newEventCategory);
         $this->redirect('list');
     }
-    
+
     /**
      * action edit
      *
@@ -96,7 +97,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     {
         $this->view->assign('eventCategory', $eventCategory);
     }
-    
+
     /**
      * action update
      *
@@ -109,7 +110,7 @@ class EventCategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $this->eventCategoryRepository->update($eventCategory);
         $this->redirect('list');
     }
-    
+
     /**
      * action delete
      *

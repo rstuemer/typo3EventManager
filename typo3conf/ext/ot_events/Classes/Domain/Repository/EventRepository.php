@@ -25,12 +25,13 @@ namespace OliverThiele\OtEvents\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * The repository for Events
  */
-class EventRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class EventRepository extends Repository
 {
 
-    
+
 }

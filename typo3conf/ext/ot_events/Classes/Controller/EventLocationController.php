@@ -25,11 +25,12 @@ namespace OliverThiele\OtEvents\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * EventLocationController
  */
-class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventLocationController extends ActionController
 {
 
     /**
@@ -39,7 +40,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
      * @inject
      */
     protected $eventLocationRepository = NULL;
-    
+
     /**
      * action list
      *
@@ -50,7 +51,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $eventLocations = $this->eventLocationRepository->findAll();
         $this->view->assign('eventLocations', $eventLocations);
     }
-    
+
     /**
      * action show
      *
@@ -61,7 +62,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     {
         $this->view->assign('eventLocation', $eventLocation);
     }
-    
+
     /**
      * action new
      *
@@ -69,9 +70,9 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
      */
     public function newAction()
     {
-        
+
     }
-    
+
     /**
      * action create
      *
@@ -84,7 +85,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $this->eventLocationRepository->add($newEventLocation);
         $this->redirect('list');
     }
-    
+
     /**
      * action edit
      *
@@ -96,7 +97,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     {
         $this->view->assign('eventLocation', $eventLocation);
     }
-    
+
     /**
      * action update
      *
@@ -109,7 +110,7 @@ class EventLocationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         $this->eventLocationRepository->update($eventLocation);
         $this->redirect('list');
     }
-    
+
     /**
      * action delete
      *

@@ -25,11 +25,12 @@ namespace OliverThiele\OtEvents\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * EventController
  */
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventController extends ActionController
 {
 
     /**
@@ -39,7 +40,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @inject
      */
     protected $eventRepository = NULL;
-    
+
     /**
      * action list
      *
@@ -50,7 +51,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $events = $this->eventRepository->findAll();
         $this->view->assign('events', $events);
     }
-    
+
     /**
      * action show
      *
@@ -61,7 +62,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->view->assign('event', $event);
     }
-    
+
     /**
      * action new
      *
@@ -69,9 +70,9 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function newAction()
     {
-        
+
     }
-    
+
     /**
      * action create
      *
@@ -84,7 +85,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->eventRepository->add($newEvent);
         $this->redirect('list');
     }
-    
+
     /**
      * action edit
      *
@@ -96,7 +97,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->view->assign('event', $event);
     }
-    
+
     /**
      * action update
      *
@@ -109,7 +110,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->eventRepository->update($event);
         $this->redirect('list');
     }
-    
+
     /**
      * action delete
      *

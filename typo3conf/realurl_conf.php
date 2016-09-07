@@ -42,6 +42,28 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
         'fixedPostVars' => array(),
         'postVarSets' => array(
             '_DEFAULT' => array(
+                'event' => array(
+                    array(
+                        'GETvar' => 'tx_otevents_pi1[controller]',
+                    ),
+                    array(
+                        'GETvar' => 'tx_otevents_pi1[action]',
+                    ),
+                    array(
+                        'GETvar' => 'tx_otevents_pi1[event]',
+                        'lookUpTable' => array(
+                            'table' => 'tx_otevents_domain_model_event',
+                            'id_field' => 'uid',
+                            'alias_field' => 'title',
+                            'addWhereClause' => ' AND NOT deleted',
+                            'useUniqueCache' => 1,
+                            'useUniqueCache_conf' => array(
+                                'strtolower' => 1,
+                                'spaceCharacter' => '-',
+                            ),
+                        ),
+                    ),
+                    ),
                 // news archive parameters
                 'archive' => array(
                     array(
@@ -100,6 +122,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
                         'GETvar' => 'tx_ttnews[swords]',
                     ),
                 ),
+
             ),
         ),
         // configure filenames for different pagetypes
