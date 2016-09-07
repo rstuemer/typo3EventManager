@@ -1,57 +1,133 @@
+{namespace b=OliverThiele\OtBootstrap3\ViewHelpers}
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://xsd.oliver-thiele.de/ns/typo3/cms-fluid/7.6/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<head>
+	<meta charset="utf-8">
+	<title>Template: List </title>
+</head>
+<body>
 
-<f:layout name="Default" />
-
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+Der Inhalt des Template  wird nicht mehr gerendert wenn der Parser auf layout stößt sondern startet beim Layout neu
+<f:layout name="Default"/>
 
 <f:section name="main">
-<h1>Listing for Event FE</h1>
+	This Template is responsible for creating a table of domain objects.
 
-<f:flashMessages />
+	If you modify this template, do not forget to change the overwrite settings
+	in /Configuration/ExtensionBuilder/settings.yaml:
+	Resources:
+	Private:
+	Templates:
+	List.html: keep
 
-<table  class="tx_otevents" >
-	<tr>
-		<th><f:translate key="tx_otevents_domain_model_event.title" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.subtitle" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.path_segment" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.event_date_time_start" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.event_date_time_stop" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.is_top_event" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.teaser" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.bodytext" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.preview_image" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.images" /></th>
-		<th><f:translate key="tx_otevents_domain_model_event.documents" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
+	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-	<f:for each="{events}" as="event">
+	<f:debug title="All">{_all}</f:debug>
+	<h1 class="alert-warning">Listing for Event FE</h1>
+
+	<f:flashMessages/>
+
+	<table class="tx_otevents">
 		<tr>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.title}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.subtitle}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.pathSegment}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.eventDateTimeStart -> f:format.date()}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.eventDateTimeStop -> f:format.date()}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.isTopEvent}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.teaser}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.bodytext}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.previewImage.originalResource.name}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.images.originalResource.name}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{event : event}"> {event.documents.originalResource.name}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{event : event}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{event : event}">Delete</f:link.action></td>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.title"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.subtitle"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.path_segment"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.event_date_time_start"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.event_date_time_stop"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.is_top_event"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.teaser"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.bodytext"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.preview_image"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.images"/>
+			</th>
+			<th>
+				<f:translate key="tx_otevents_domain_model_event.documents"/>
+			</th>
+			<th></th>
+			<th></th>
 		</tr>
-	</f:for>
-</table>
 
-<f:link.action action="new">New Event</f:link.action>
-</f:section>
+		<f:for each="{events}" as="event">
+			<tr>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.title}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.subtitle}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.pathSegment}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.eventDateTimeStart ->
+						f:format.date()}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.eventDateTimeStop ->
+						f:format.date()}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.isTopEvent}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.teaser}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.bodytext}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}">
+						{event.previewImage.originalResource.name}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}"> {event.images.originalResource.name}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{event : event}">
+						{event.documents.originalResource.name}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="edit" arguments="{event : event}">Edit</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="delete" arguments="{event : event}">Delete</f:link.action>
+				</td>
+			</tr>
+		</f:for>
+	</table>
+
+	<f:link.action action="new">New Event</f:link.action>
+	</f:section>
+
+</body>
+</html>
+
+
+
+
+

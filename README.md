@@ -42,7 +42,21 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
   	Hook Einbauen : Beispiel ot_divider 
   	
   
-  
+###Typo3 URLs
+  	http://typo3.p372665.mittwaldserver.info/
+  	?tx_otevents_pi1%5Bevent%5D=1
+  	&tx_otevents_pi1%5Baction%5D=show
+  	&tx_otevents_pi1%5Bcontroller%5D=Event&
+  	cHash=a33d2542e86a0303254c3d3321a32484
+  	#### CHash 
+  		Wenn Parameter angehängt sind wird immer ein CHash angehängt 		
+  	RealURL PID:1 Event->Show		
+  	http://url/event/title-der-veranstaltung
+  	Aufpassen das es keinen Chash-Wert gibt wenn man realURL verwendet
+  	
+
+
+
 ## Interessante Links 
 	-FileUpload : https://github.com/plobacher/extbasebookexample , https://github.com/helhum/upload_example
 	-Datenschutz: Shariff
@@ -51,6 +65,14 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
 	-Typo3 Context : http://blog.marit.ag/2014/11/03/typo3-context-verstehen-und-anwenden/
 # Tips
 	-System Cache Leeren aktivieren ->Installtool-> Configuration Preset -> Debugsettings -> debug -> activate -> Custom -> remove deprecated log 
+	-DebugUtility::var_dump($events,"Events");
+	-ext_emconf.php -> Add psr4 Autoloader   
+	```php
+		'autoload' => ['psr-4' => ['OliverThiele\\OtEvents\\'=> 'Classes']
+                                               ],
+## Einstellungen 
+		Installtool -> All Configuration 
+			-pageNotFoundOnCHashError rausnehmen (dann kann es aber sein das RealURL den alten CHash hat und damit die Seiten nicht gecacht werden )
 ## Performance 
 	-Redis-Server Cache 
 	-Varnish-Cache
@@ -77,5 +99,5 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
 
 # phpStorm Key
  strg + geteilt (auf nummernblock) -> Zeile aufkommentieren
-
+alt + shift + pfeil -> Zeile verschieben
 

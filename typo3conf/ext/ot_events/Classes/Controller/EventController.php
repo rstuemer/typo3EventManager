@@ -25,7 +25,10 @@ namespace OliverThiele\OtEvents\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+
+use OliverThiele\OtEvents\Domain\Model\Event;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * EventController
@@ -42,14 +45,50 @@ class EventController extends ActionController
     protected $eventRepository = NULL;
 
     /**
+     *
+     */
+    protected function initializeAction()
+    {
+
+
+        if($this->settings['flexForm']['singlePid']>0){
+            $this->settings['displayList']['singlePid'] =$this->settings['flexForm']['singlePid'];
+        }
+
+        DebuggerUtility::var_dump($this->settings,'$Settings');
+        DebuggerUtility::var_dump($this->request,'$Request');
+
+    }  /**
+     *
+     */
+    protected function initializeShowAction()
+    {
+        if($this->settings['flexForm']['showUid']>0){
+            $this->request->setArgument('event',$this->settings['flexForm']['showUid']);
+        }
+
+    }
+
+    /**
      * action list
      *
      * @return void
      */
     public function listAction()
     {
+
+//        $newEvent = new Event();
+//        $newEvent->setTitle("Mein Event:". date('d.m.y H:i:s'));
+//        $now = new \DateTime();
+//        $newEvent->setEventDateTimeStart($now);
+
+//        $this->eventRepository->add($newEvent);
+
+
         $events = $this->eventRepository->findAll();
         $this->view->assign('events', $events);
+        DebuggerUtility::var_dump($events,'$events');
+
     }
 
     /**

@@ -3,6 +3,8 @@
 <?php
 // $GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'].= ',tx_realurl_pathsegment'; // Nicht mehr nötig
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
+    'encodeSpURL_postProc' => array('user_encodeSpURL_postProc'),
+    'decodeSpURL_preProc' => array('user_decodeSpURL_preProc'),
     '_DEFAULT' => array(
         'init' => array(
             'enableCHashCache' => 1,
@@ -42,28 +44,36 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
         'fixedPostVars' => array(),
         'postVarSets' => array(
             '_DEFAULT' => array(
-                'event' => array(
-                    array(
-                        'GETvar' => 'tx_otevents_pi1[controller]',
-                    ),
-                    array(
-                        'GETvar' => 'tx_otevents_pi1[action]',
-                    ),
-                    array(
-                        'GETvar' => 'tx_otevents_pi1[event]',
-                        'lookUpTable' => array(
-                            'table' => 'tx_otevents_domain_model_event',
-                            'id_field' => 'uid',
-                            'alias_field' => 'title',
-                            'addWhereClause' => ' AND NOT deleted',
-                            'useUniqueCache' => 1,
-                            'useUniqueCache_conf' => array(
-                                'strtolower' => 1,
-                                'spaceCharacter' => '-',
-                            ),
-                        ),
-                    ),
-                    ),
+//                'event' => array(
+//                    array(
+//                        'GETvar' => 'tx_otevents_pi1[controller]',
+//                    ),
+//                    array(
+//                        'GETvar' => 'tx_otevents_pi1[action]',
+//                    ),
+//                    array(
+//                        'GETvar' => 'tx_otevents_pi1[event]',
+//                        'lookUpTable' => array(
+//                            'table' => 'tx_otevents_domain_model_event',
+//                            'id_field' => 'uid',
+//                            'alias_field' => 'title',
+//                            'addWhereClause' => ' AND NOT deleted',
+//                            'useUniqueCache' => 1,
+//                            'useUniqueCache_conf' => array(
+//                                'strtolower' => 1,
+//                                'spaceCharacter' => '-',
+//                            ),
+//                        ),
+//                    ),
+//                ),
+//                'events' => array(
+//                    array(
+//                        'GETvar' => 'tx_otevents_pi1[controller]',
+//                    ),
+//                    array(
+//                        'GETvar' => 'tx_otevents_pi1[action]',
+//                    ),
+//                ),
                 // news archive parameters
                 'archive' => array(
                     array(
@@ -157,5 +167,12 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'] = array(
             ),
         ),
     ),
-);
 
+);
+function user_encodeSpURL_postProc(&$params, &$ref) {
+    $params['URL'] = str_replace('event/Event/show/', 'event/', $params['URL']);
+}
+function user_decodeSpURL_preProc(&$params, &$ref)
+{
+    $params['URL'] = str_replace('event/', 'event/Event/show/', $params['URL']);
+}

@@ -9,8 +9,14 @@ plugin.tx_otevents_pi1 {
 		layoutRootPath = EXT:ot_events/Resources/Private/Layouts/
 	}
 	persistence {
-		# cat=plugin.tx_otevents_pi1//a; type=string; label=Default storage PID
+		# cat=plugin.tx_otevents_pi1/links/a; type=string; label=Default storage PID
 		storagePid =
+	}
+	settings{
+		displayList{
+			# cat=plugin.tx_otevents_pi1/links/a; type=int+; label= Single PID:lorem ipsum
+			singlePid =
+		}
 	}
 }
 
