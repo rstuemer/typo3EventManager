@@ -22,6 +22,7 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
   ###ext_emconf.php 
 	-Informationen für den Erweitungsmanager 
 	-Abhängigkeiten
+	
   ###ext_tables.sql	
   	 Anlegen und verändern der Datenbank. 
   	 Immer Create Statements Typo3 parst diese Datei nochmal und ändert selbstständig auf ALTER wenn die Tablle  schon existiert.
@@ -29,26 +30,25 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
   ###ext_tables.php
   	-Plugin Registrieren
   	-Flexforms	einbinden
-  	-register Plugin in Template->Include List und lädt setup und constants Dateien -> 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript',
-        'typo3EventManager');
-     -addLLrefForTCAdescr -> ContextSensitive Hilfe Texte etc.
-     -allowTableOnStandardPages -> Kann der Datensatz auf Normalen Seiten angelegt werden. 
-     -makeCategorizable -> kategorisierbar machen   
+  	-addStaticFile : register Plugin in Template->Include List und lädt setup und constants Dateien 
+     -addLLrefForTCAdescr: ContextSensitive Hilfe Texte etc.
+     -allowTableOnStandardPages : Kann der Datensatz auf Normalen Seiten angelegt werden. 
+     -makeCategorizable: kategorisierbar machen   
 
   	
   	
   	
   ###ext_localconf.php 
-  	Hook Einbauen -> Beispiel ot_divider 
+  	Hook Einbauen : Beispiel ot_divider 
   	
   
   
 ##Interessante Links 
-	FileUpload -> https://github.com/plobacher/extbasebookexample , https://github.com/helhum/upload_example
-	Datenschutz-> Shariff
-	SRIHash.org -> CDN Dateien auf Veränderung checken	
-	Hooks: https://somethingphp.com/extending-classes-typo3/
-	Typo3 Context -> http://blog.marit.ag/2014/11/03/typo3-context-verstehen-und-anwenden/
+	-FileUpload : https://github.com/plobacher/extbasebookexample , https://github.com/helhum/upload_example
+	-Datenschutz: Shariff
+	-SRIHash.org : CDN Dateien auf Veränderung checken	
+	-Hooks: https://somethingphp.com/extending-classes-typo3/
+	-Typo3 Context : http://blog.marit.ag/2014/11/03/typo3-context-verstehen-und-anwenden/
 #Tips
 	-System Cache Leeren aktivieren ->Installtool-> Configuration Preset -> Debugsettings -> debug -> activate -> Custom -> remove deprecated log 
 ##Performance 
