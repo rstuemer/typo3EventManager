@@ -19,6 +19,7 @@ CREATE TABLE tx_otevents_domain_model_event (
 	documents int(11) unsigned NOT NULL default '0',
 	event_location int(11) unsigned DEFAULT '0',
 	event_categories int(11) unsigned DEFAULT '0' NOT NULL,
+	categories int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -59,10 +60,10 @@ CREATE TABLE tx_otevents_domain_model_eventlocation (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	address text NOT NULL,
-	zip varchar(255) DEFAULT '' NOT NULL,
-	city varchar(255) DEFAULT '' NOT NULL,
-	latitude varchar(255) DEFAULT '' NOT NULL,
-	longitude varchar(255) DEFAULT '' NOT NULL,
+	zip varchar(20) DEFAULT '' NOT NULL,
+	city varchar(60) DEFAULT '' NOT NULL,
+	latitude decimal(12,8) DEFAULT '0.00000000' NOT NULL,
+	longitude decimal(12,8) DEFAULT '0.00000000' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -133,12 +134,6 @@ CREATE TABLE tx_otevents_domain_model_eventcategory (
 
 );
 
-#
-# Table structure for table 'tx_otevents_domain_model_event'
-#
-CREATE TABLE tx_otevents_domain_model_event (
-	categories int(11) unsigned DEFAULT '0' NOT NULL,
-);
 
 #
 # Table structure for table 'tx_otevents_event_eventcategory_mm'
