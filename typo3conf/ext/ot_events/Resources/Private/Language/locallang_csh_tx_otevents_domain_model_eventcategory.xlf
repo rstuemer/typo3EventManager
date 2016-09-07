@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-09-06T17:11:13Z" product-name="ot_events">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="parent_category.description">
+				<source>parent Category</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

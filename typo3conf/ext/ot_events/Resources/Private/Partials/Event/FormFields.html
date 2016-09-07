@@ -1,0 +1,45 @@
+
+<label for="title">
+	<f:translate key="tx_otevents_domain_model_event.title" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="title" /><br />
+<label for="subtitle">
+	<f:translate key="tx_otevents_domain_model_event.subtitle" />
+</label><br />
+	<f:form.textfield property="subtitle" /><br />
+<label for="pathSegment">
+	<f:translate key="tx_otevents_domain_model_event.path_segment" />
+</label><br />
+	<f:form.textfield property="pathSegment" /><br />
+<label for="eventDateTimeStart">
+	<f:translate key="tx_otevents_domain_model_event.event_date_time_start" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="eventDateTimeStart"  value="{event.eventDateTimeStart->f:format.date()}" /><br />
+<label for="eventDateTimeStop">
+	<f:translate key="tx_otevents_domain_model_event.event_date_time_stop" />
+</label><br />
+	<f:form.textfield property="eventDateTimeStop"  value="{event.eventDateTimeStop->f:format.date()}" /><br />
+<label for="isTopEvent">
+	<f:translate key="tx_otevents_domain_model_event.is_top_event" />
+</label><br />
+	<f:form.checkbox property="isTopEvent" value="1" /><br />
+<label for="teaser">
+	<f:translate key="tx_otevents_domain_model_event.teaser" />
+</label><br />
+	<f:form.textarea property="teaser" cols="40" rows="15" /><br />
+<label for="bodytext">
+	<f:translate key="tx_otevents_domain_model_event.bodytext" />
+</label><br />
+	<f:form.textarea property="bodytext" cols="40" rows="15" /><br />
+<label for="previewImage">
+	<f:translate key="tx_otevents_domain_model_event.preview_image" />
+</label><br />
+	<span>File upload is not implemented!</span><br  /><br />
+<label for="images">
+	<f:translate key="tx_otevents_domain_model_event.images" />
+</label><br />
+	<span>File upload is not implemented!</span><br  /><br />
+<label for="documents">
+	<f:translate key="tx_otevents_domain_model_event.documents" />
+</label><br />
+	<span>File upload is not implemented!</span><br /><br />

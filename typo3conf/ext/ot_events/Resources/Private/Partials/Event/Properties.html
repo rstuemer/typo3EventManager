@@ -1,0 +1,93 @@
+
+<table class="tx-ot-events" >
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.title" />
+		</td>
+		<td>
+		{event.title}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.subtitle" />
+		</td>
+		<td>
+		{event.subtitle}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.path_segment" />
+		</td>
+		<td>
+		{event.pathSegment}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.event_date_time_start" />
+		</td>
+		<td>
+		{event.eventDateTimeStart -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.event_date_time_stop" />
+		</td>
+		<td>
+		{event.eventDateTimeStop -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.is_top_event" />
+		</td>
+		<td>
+		{event.isTopEvent}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.teaser" />
+		</td>
+		<td>
+		{event.teaser}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.bodytext" />
+		</td>
+		<td>
+		{event.bodytext}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.preview_image" />
+		</td>
+		<td>
+				<f:image src="{event.previewImage.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.images" />
+		</td>
+		<td>
+				<f:image src="{event.images.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_otevents_domain_model_event.documents" />
+		</td>
+		<td>
+				<a href="{event.documents.originalResource.publicUrl}">
+					{event.documents.originalResource.name}
+				</a>
+		</td>
+	</tr>
+</table>
