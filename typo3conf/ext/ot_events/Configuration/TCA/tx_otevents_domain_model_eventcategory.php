@@ -130,10 +130,23 @@ return [
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_eventcategory.parent_category',
 			'config' => [
 				'type' => 'select',
-				'renderType' => 'selectSingle',
+				'renderType' => 'selectTree',
 				'foreign_table' => 'tx_otevents_domain_model_eventcategory',
 				'minitems' => 0,
 				'maxitems' => 1,
+                'treeConfig' => [
+                    'expandAll' => true,
+                    'parentField' => 'parent_category',
+                    'appearance' => [
+                        'showHeader' => TRUE,
+                    ],
+                ],
+                //'MM' => 'tx_otevents_event_eventcategory_mm',
+                //'MM_opposite_field' => 'event_categories',
+//                'MM_match_fields' => array(
+//                    'tablenames' => 'pages',
+//                    'fieldname' => 'categories',
+//                ),
             ],
         ],
 
