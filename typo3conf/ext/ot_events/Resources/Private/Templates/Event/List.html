@@ -38,7 +38,23 @@ Der Inhalt des Template wird nicht mehr gerendert wenn der Parser auf layout stÃ
 							BILD
 						</div>
 						<div class="col-xs-12 col-sm-8">
-							<f:link.action action="show" arguments="{event : event}"> {event.title}</f:link.action>
+							<h2>
+
+								<f:comment>
+									<![CDATA[
+									<!--<f:format.date format="d.m.Y">{event.eventDateTimeStart}</f:format.date>-->
+									]]>
+								</f:comment>
+								{event.eventDateTimeStart -> f:format.date(format:'{f:translate(id: \'format_date\')}')}
+								<f:link.action action="show" arguments="{event : event}"> {event.title}</f:link.action>
+								<f:if condition="{event.subtitle}">
+									</br>
+									<small>{event.subtitle}</small>
+								</f:if>
+							</h2>
+							{event.teaser -> f:format.html()}
+
+
 						</div>
 					</div>
 				</f:for>

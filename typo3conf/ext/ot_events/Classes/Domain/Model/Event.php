@@ -26,10 +26,12 @@ namespace OliverThiele\OtEvents\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /**
  * Event
  */
-class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Event extends AbstractEntity
 {
 
     /**
@@ -39,78 +41,79 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @validate NotEmpty
      */
     protected $title = '';
-    
+
     /**
      * Subtitle
      *
      * @var string
      */
     protected $subtitle = '';
-    
+
     /**
      * pathSegment
      *
      * @var string
      */
     protected $pathSegment = '';
-    
+
     /**
      * Start Zeit
      *
      * @var \DateTime
      * @validate NotEmpty
+     * @validate DateTime
      */
     protected $eventDateTimeStart = null;
-    
+
     /**
      * eventDateTimeStop
      *
      * @var \DateTime
      */
     protected $eventDateTimeStop = null;
-    
+
     /**
      * Top Event
      *
      * @var bool
      */
     protected $isTopEvent = false;
-    
+
     /**
      * Teaser
      *
      * @var string
      */
     protected $teaser = '';
-    
+
     /**
      * RTE-Text
      *
      * @var string
      */
     protected $bodytext = '';
-    
+
     /**
      * Preview Image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $previewImage = null;
-    
+
     /**
      * Images
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $images = null;
-    
+
     /**
      * Documents
      *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $documents = null;
-    
+
     /**
      * Event Location
      *
@@ -118,7 +121,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $eventLocation = null;
-    
+
     /**
      * Event categories
      *
@@ -126,7 +129,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $eventCategories = null;
-    
+
     /**
      * Returns the title
      *
@@ -136,7 +139,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->title;
     }
-    
+
     /**
      * Sets the title
      *
@@ -147,7 +150,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
-    
+
     /**
      * __construct
      */
@@ -156,7 +159,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -167,9 +170,10 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->eventCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->eventCategories = new ObjectStorage();
+        //$this->images = new ObjectStorage();
+         //$this->documents = new ObjectStorage();
     }
-    
     /**
      * Returns the eventLocation
      *
@@ -179,7 +183,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->eventLocation;
     }
-    
+
     /**
      * Sets the eventLocation
      *
@@ -190,29 +194,29 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->eventLocation = $eventLocation;
     }
-    
+
     /**
      * Adds a EventCategory
      *
      * @param \OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategory
      * @return void
      */
-    public function addEventCategory(\OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategory)
+    public function addEventCategory(EventCategory $eventCategory)
     {
         $this->eventCategories->attach($eventCategory);
     }
-    
+
     /**
      * Removes a EventCategory
      *
-     * @param \OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategoryToRemove The EventCategory to be removed
+     * @param \OliverThiele\OtEvents\Domain\Model\EventCategory  $eventCategoryToRemove The EventCategory to be removed
      * @return void
      */
-    public function removeEventCategory(\OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategoryToRemove)
+    public function removeEventCategory(EventCategory $eventCategoryToRemove)
     {
         $this->eventCategories->detach($eventCategoryToRemove);
     }
-    
+
     /**
      * Returns the eventCategories
      *
@@ -222,7 +226,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->eventCategories;
     }
-    
+
     /**
      * Sets the eventCategories
      *
@@ -233,7 +237,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->eventCategories = $eventCategories;
     }
-    
+
     /**
      * Returns the subtitle
      *
@@ -243,7 +247,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->subtitle;
     }
-    
+
     /**
      * Sets the subtitle
      *
@@ -254,7 +258,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->subtitle = $subtitle;
     }
-    
+
     /**
      * Returns the pathSegment
      *
@@ -264,7 +268,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->pathSegment;
     }
-    
+
     /**
      * Sets the pathSegment
      *
@@ -275,7 +279,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->pathSegment = $pathSegment;
     }
-    
+
     /**
      * Returns the eventDateTimeStart
      *
@@ -285,7 +289,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->eventDateTimeStart;
     }
-    
+
     /**
      * Sets the eventDateTimeStart
      *
@@ -296,7 +300,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->eventDateTimeStart = $eventDateTimeStart;
     }
-    
+
     /**
      * Returns the eventDateTimeStop
      *
@@ -306,7 +310,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->eventDateTimeStop;
     }
-    
+
     /**
      * Sets the eventDateTimeStop
      *
@@ -317,7 +321,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->eventDateTimeStop = $eventDateTimeStop;
     }
-    
+
     /**
      * Returns the isTopEvent
      *
@@ -327,7 +331,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->isTopEvent;
     }
-    
+
     /**
      * Sets the isTopEvent
      *
@@ -338,7 +342,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->isTopEvent = $isTopEvent;
     }
-    
+
     /**
      * Returns the boolean state of isTopEvent
      *
@@ -348,7 +352,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->isTopEvent;
     }
-    
+
     /**
      * Returns the teaser
      *
@@ -358,7 +362,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->teaser;
     }
-    
+
     /**
      * Sets the teaser
      *
@@ -369,7 +373,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->teaser = $teaser;
     }
-    
+
     /**
      * Returns the bodytext
      *
@@ -379,7 +383,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->bodytext;
     }
-    
+
     /**
      * Sets the bodytext
      *
@@ -390,7 +394,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->bodytext = $bodytext;
     }
-    
+
     /**
      * Returns the previewImage
      *
@@ -400,7 +404,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->previewImage;
     }
-    
+
     /**
      * Sets the previewImage
      *
@@ -411,46 +415,47 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->previewImage = $previewImage;
     }
-    
+
     /**
      * Returns the images
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $images
+     * @return   \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      */
     public function getImages()
     {
         return $this->images;
     }
-    
+
     /**
      * Sets the images
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $images
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      * @return void
      */
-    public function setImages(\TYPO3\CMS\Extbase\Domain\Model\FileReference $images)
+    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
     {
         $this->images = $images;
     }
-    
+
+
+
     /**
      * Returns the documents
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $documents
+     * @return  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $documents
      */
     public function getDocuments()
     {
         return $this->documents;
     }
-    
+
     /**
      * Sets the documents
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $documents
+     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $documents
      * @return void
      */
-    public function setDocuments(\TYPO3\CMS\Extbase\Domain\Model\FileReference $documents)
-    {
+    public function setDocuments(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $documents)   {
         $this->documents = $documents;
     }
 

@@ -80,6 +80,10 @@
 				<source>No Events found.</source>
                 <target>Es wurde keine Veranstaltung gefunden.</target>
             </trans-unit>
+			<trans-unit id="format_date">
+				<source>m/d/Y</source>
+				<target>d.m.Y</target>
+			</trans-unit>
         </body>
 	</file>
 </xliff>

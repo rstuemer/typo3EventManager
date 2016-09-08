@@ -300,7 +300,7 @@ return [
 							--palette--;;filePalette'
                         ]
                     ],
-					'maxitems' => 1
+					'maxitems' => 6
                 ],
 				//$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
                 'png,jpeg,jpg'
@@ -347,7 +347,7 @@ return [
 							--palette--;;filePalette'
                         ]
                     ],
-					'maxitems' => 1
+					'maxitems' =>6
                 ]
 			),
         ],
