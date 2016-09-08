@@ -1,6 +1,6 @@
 <?php
-return array(
-	'ctrl' => array(
+return [
+	'ctrl' => [
 		'title'	=> 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event',
 		'label' => 'title',
 		'tstamp' => 'tstamp',
@@ -14,355 +14,358 @@ return array(
 		'transOrigPointerField' => 'l10n_parent',
 		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
-		'enablecolumns' => array(
+		'enablecolumns' => [
 			'disabled' => 'hidden',
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
-		),
+        ],
 		'searchFields' => 'title,subtitle,path_segment,event_date_time_start,event_date_time_stop,is_top_event,teaser,bodytext,preview_image,images,documents,event_location,event_categories,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ot_events') . 'Resources/Public/Icons/tx_otevents_domain_model_event.gif'
-	),
-	'interface' => array(
+    ],
+	'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, subtitle, path_segment, event_date_time_start, event_date_time_stop, is_top_event, teaser, bodytext, preview_image, images, documents, event_location, event_categories',
-	),
-	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, subtitle, path_segment, event_date_time_start, event_date_time_stop, is_top_event, teaser, bodytext;;;richtext:rte_transform[mode=ts_links], preview_image, images, documents, event_location, event_categories, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-	),
-	'palettes' => array(
-		'1' => array('showitem' => ''),
-	),
-	'columns' => array(
-	
-		'sys_language_uid' => array(
+    ],
+	'types' => [
+		'1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, subtitle, path_segment, event_date_time_start, event_date_time_stop, is_top_event, teaser, bodytext;;;richtext:rte_transform[mode=ts_links], preview_image, images, documents, event_location, event_categories, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+    ],
+	'palettes' => [
+		'1' => ['showitem' => ''],
+    ],
+	'columns' => [
+
+		'sys_language_uid' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'foreign_table' => 'sys_language',
 				'foreign_table_where' => 'ORDER BY sys_language.title',
-				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
-				),
-			),
-		),
-		'l10n_parent' => array(
+				'items' => [
+					['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
+					['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
+                ],
+            ],
+        ],
+		'l10n_parent' => [
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectSingle',
-				'items' => array(
-					array('', 0),
-				),
+				'items' => [
+					['', 0],
+                ],
 				'foreign_table' => 'tx_otevents_domain_model_event',
 				'foreign_table_where' => 'AND tx_otevents_domain_model_event.pid=###CURRENT_PID### AND tx_otevents_domain_model_event.sys_language_uid IN (-1,0)',
-			),
-		),
-		'l10n_diffsource' => array(
-			'config' => array(
+            ],
+        ],
+		'l10n_diffsource' => [
+			'config' => [
 				'type' => 'passthrough',
-			),
-		),
+            ],
+        ],
 
-		't3ver_label' => array(
+		't3ver_label' => [
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 30,
 				'max' => 255,
-			)
-		),
-	
-		'hidden' => array(
+            ]
+        ],
+
+		'hidden' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-			'config' => array(
+			'config' => [
 				'type' => 'check',
-			),
-		),
-		'starttime' => array(
+            ],
+        ],
+		'starttime' => [
 			'exclude' => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 13,
 				'max' => 20,
 				'eval' => 'datetime',
 				'checkbox' => 0,
 				'default' => 0,
-				'range' => array(
+				'range' => [
 					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
-			),
-		),
-		'endtime' => array(
+                ],
+            ],
+        ],
+		'endtime' => [
 			'exclude' => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 13,
 				'max' => 20,
 				'eval' => 'datetime',
 				'checkbox' => 0,
 				'default' => 0,
-				'range' => array(
+				'range' => [
 					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
-			),
-		),
+                ],
+            ],
+        ],
 
-		'title' => array(
+		'title' => [
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.title',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
-			),
-		),
-		'subtitle' => array(
+            ],
+        ],
+		'subtitle' => [
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.subtitle',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim'
-			),
-		),
-		'path_segment' => array(
+            ],
+        ],
+		'path_segment' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.path_segment',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim'
-			),
-		),
-		'event_date_time_start' => array(
+            ],
+        ],
+		'event_date_time_start' => [
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.event_date_time_start',
-			'config' => array(
+			'config' => [
 				'dbType' => 'datetime',
 				'type' => 'input',
 				'size' => 12,
 				'eval' => 'datetime,required',
 				'checkbox' => 0,
 				'default' => '0000-00-00 00:00:00'
-			),
-		),
-		'event_date_time_stop' => array(
+            ],
+        ],
+		'event_date_time_stop' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.event_date_time_stop',
-			'config' => array(
+			'config' => [
 				'dbType' => 'datetime',
 				'type' => 'input',
 				'size' => 12,
 				'eval' => 'datetime',
 				'checkbox' => 0,
 				'default' => '0000-00-00 00:00:00'
-			),
-		),
-		'is_top_event' => array(
+            ],
+        ],
+		'is_top_event' => [
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.is_top_event',
-			'config' => array(
+			'config' => [
 				'type' => 'check',
 				'default' => 0
-			)
-		),
-		'teaser' => array(
+            ]
+        ],
+		'teaser' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.teaser',
-			'config' => array(
+			'config' => [
 				'type' => 'text',
 				'cols' => 40,
 				'rows' => 15,
 				'eval' => 'trim'
-			)
-		),
-		'bodytext' => array(
+            ]
+        ],
+		'bodytext' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.bodytext',
-			'config' => array(
+			'config' => [
 				'type' => 'text',
 				'cols' => 40,
 				'rows' => 15,
 				'eval' => 'trim',
-				'wizards' => array(
-					'RTE' => array(
+				'wizards' => [
+					'RTE' => [
 						'icon' => 'wizard_rte2.gif',
 						'notNewRecords'=> 1,
 						'RTEonly' => 1,
-						'module' => array(
+						'module' => [
 							'name' => 'wizard_rich_text_editor',
-							'urlParameters' => array(
+							'urlParameters' => [
 								'mode' => 'wizard',
 								'act' => 'wizard_rte.php'
-							)
-						),
+                            ]
+                        ],
 						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
 						'type' => 'script'
-					)
-				)
-			),
-		),
-		'preview_image' => array(
+                    ]
+                ]
+            ],
+        ],
+		'preview_image' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.preview_image',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
 				'preview_image',
-				array(
-					'appearance' => array(
+				[
+					'appearance' => [
 						'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
-					),
-					'foreign_types' => array(
-						'0' => array(
+                    ],
+					'foreign_types' => [
+						'0' => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						)
-					),
+                        ]
+                    ],
 					'maxitems' => 1
-				),
-				$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                ],
+                'png,jpeg,jpg'
+				//$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                //Kann auch eingeschränkt werden -> Zeile Löschen und durch z.b.'jpg,jpeg' ersetzen
 			),
-		),
-		'images' => array(
+        ],
+		'images' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.images',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
 				'images',
-				array(
-					'appearance' => array(
+				[
+					'appearance' => [
 						'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
-					),
-					'foreign_types' => array(
-						'0' => array(
+                    ],
+					'foreign_types' => [
+						'0' => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						)
-					),
+                        ]
+                    ],
 					'maxitems' => 1
-				),
-				$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                ],
+				//$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                'png,jpeg,jpg'
 			),
-		),
-		'documents' => array(
+        ],
+		'documents' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.documents',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
 				'documents',
-				array(
-					'appearance' => array(
+				[
+					'appearance' => [
 						'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:media.addFileReference'
-					),
-					'foreign_types' => array(
-						'0' => array(
+                    ],
+					'foreign_types' => [
+						'0' => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						),
-						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+                        ],
+						\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
 							'showitem' => '
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
-						)
-					),
+                        ]
+                    ],
 					'maxitems' => 1
-				)
+                ]
 			),
-		),
-		'event_location' => array(
+        ],
+		'event_location' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.event_location',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'foreign_table' => 'tx_otevents_domain_model_eventlocation',
 				'minitems' => 0,
 				'maxitems' => 1,
-			),
-		),
-		'event_categories' => array(
+            ],
+        ],
+		'event_categories' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ot_events/Resources/Private/Language/locallang_db.xlf:tx_otevents_domain_model_event.event_categories',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectMultipleSideBySide',
 				'foreign_table' => 'tx_otevents_domain_model_eventcategory',
@@ -371,35 +374,35 @@ return array(
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
 				'multiple' => 0,
-				'wizards' => array(
+				'wizards' => [
 					'_PADDING' => 1,
 					'_VERTICAL' => 1,
-					'edit' => array(
-						'module' => array(
+					'edit' => [
+						'module' => [
 							'name' => 'wizard_edit',
-						),
+                        ],
 						'type' => 'popup',
 						'title' => 'Edit',
 						'icon' => 'edit2.gif',
 						'popup_onlyOpenIfSelected' => 1,
 						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-						),
-					'add' => Array(
-						'module' => array(
+                    ],
+					'add' => [
+						'module' => [
 							'name' => 'wizard_add',
-						),
+                        ],
 						'type' => 'script',
 						'title' => 'Create new',
 						'icon' => 'add.gif',
-						'params' => array(
+						'params' => [
 							'table' => 'tx_otevents_domain_model_eventcategory',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
-						),
-					),
-				),
-			),
-		),
-		
-	),
-);
+                        ],
+                    ],
+                ],
+            ],
+        ],
+
+    ],
+];
