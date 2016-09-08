@@ -360,6 +360,7 @@ return [
 				'foreign_table' => 'tx_otevents_domain_model_eventlocation',
 				'minitems' => 0,
 				'maxitems' => 1,
+                'items' => [['',0]]
             ],
         ],
 		'event_categories' => [

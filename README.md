@@ -64,6 +64,7 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
 	-SRIHash.org : CDN Dateien auf Veränderung checken	
 	-Hooks: https://somethingphp.com/extending-classes-typo3/
 	-Typo3 Context : http://blog.marit.ag/2014/11/03/typo3-context-verstehen-und-anwenden/
+	-CanIUse.com 
 # Tips
 	-System Cache Leeren aktivieren ->Installtool-> Configuration Preset -> Debugsettings -> debug -> activate -> Custom -> remove deprecated log 
 	-DebugUtility::var_dump($events,"Events");
@@ -107,4 +108,13 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
 # phpStorm Key
  strg + geteilt (auf nummernblock) -> Zeile aufkommentieren
 alt + shift + pfeil -> Zeile verschieben
+
+
+
+
+
+
+
+
+
 

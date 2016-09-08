@@ -84,6 +84,9 @@
         <trans-unit id="format_date">
                 <source>m/d/Y</source>
 		</trans-unit>
+        <trans-unit id="events_images_not_found">
+                <source>No image found.</source>
+            </trans-unit>
         </body>
 	</file>
 </xliff>

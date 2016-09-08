@@ -19,15 +19,15 @@
 								<items>
 									<numIndex index="0">
 										<numIndex index="0">List</numIndex>
-										<numIndex index="1">Event->list</numIndex>
+										<numIndex index="1">Event->list;Event->listSearchResults</numIndex>
 									</numIndex>
 									<numIndex index="1">
 										<numIndex index="0">Single</numIndex>
-										<numIndex index="1">Event->show</numIndex>
+										<numIndex index="1">Event->show;Event->listSearchResults</numIndex>
 									</numIndex>
 									<numIndex index="2">
 										<numIndex index="0">Admin</numIndex>
-										<numIndex index="1">Event->list;Event->show;Event->new;Event->create;Event->edit;Event->update;Event->delete</numIndex>
+										<numIndex index="1">Event->list;Event->show;Event->new;Event->create;Event->edit;Event->update;Event->delete;Event->listSearchResults</numIndex>
 									</numIndex>
 								</items>
 							</config>

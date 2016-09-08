@@ -1,93 +1,187 @@
+{namespace b=OliverThiele\OtBootstrap3\ViewHelpers}
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://xsd.oliver-thiele.de/ns/typo3/cms-fluid/7.6/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<head>
+	<meta charset="utf-8">
+	<title>Template: List </title>
+	<link rel="stylesheet" type="text/css"
+		  href="typo3conf/ext/ot_bootstrap3/Resources/Public/Vendor/Bootstrap3/css/bootstrap.css" media="all"/>
+</head>
+<body>
 
-<table class="tx-ot-events" >
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.title" />
-		</td>
-		<td>
+<f:section name="main">
+	<h1>
+		{event.eventDateTimeStart -> f:format.date(format:'{f:translate(id:\'format_date\')}')}
 		{event.title}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.subtitle" />
-		</td>
-		<td>
-		{event.subtitle}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.path_segment" />
-		</td>
-		<td>
-		{event.pathSegment}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.event_date_time_start" />
-		</td>
-		<td>
-		{event.eventDateTimeStart -> f:format.date()}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.event_date_time_stop" />
-		</td>
-		<td>
-		{event.eventDateTimeStop -> f:format.date()}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.is_top_event" />
-		</td>
-		<td>
-		{event.isTopEvent}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.teaser" />
-		</td>
-		<td>
-		{event.teaser}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.bodytext" />
-		</td>
-		<td>
-		{event.bodytext}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.preview_image" />
-		</td>
-		<td>
-				<f:image src="{event.previewImage.originalResource.publicUrl}" width="200"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.images" />
-		</td>
-		<td>
-				<f:image src="{event.images.originalResource.publicUrl}" width="200"/>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_otevents_domain_model_event.documents" />
-		</td>
-		<td>
-				<a href="{event.documents.originalResource.publicUrl}">
-					{event.documents.originalResource.name}
+
+		<f:if condition="{event.subtitle}">
+			<br/>
+			<small>{event.subtitle}</small>
+		</f:if>
+	</h1>
+
+	<p class="lead">{event.teaser -> f:format.raw()}</p>
+	<div class="well"> {event.bodyText-> f:format.html()}</div>
+
+	<hr/>
+	<!--<f:if condition="{event.previewImage}">-->
+	<!--<f:then>-->
+	<!--<f:image src="{event.previewImage.originalResource.publicUrl}" class="img-responsive" width="200"/>-->
+	<!--</f:then>-->
+	<!--<f:else>-->
+	<!--&lt;!&ndash;<f:translate key="events_images_not_found" />&ndash;&gt;-->
+	<!--</f:else>-->
+	<!--</f:if>-->
+
+
+	<f:if condition="{event.images}">
+		<div class="gallery row">
+			<f:for each="{event.images}" as="image" iteration="imageIntegrator">
+				<a href="{f:uri.image(
+				   src: '{image.originalResource.publicUrl}',
+				width: '1140'
+				)}">
+					<picture class="col-sm-3 image-{imageIterator.index}">
+						<source srcset="{f:uri.image(
+											src: '{image.originalResource.publicUrl}',
+											width: '737',
+											)}"
+								media="(max-device-width:767px)"/>
+
+						<f:image src="{image.originalResource.publicUrl}"
+								 class="img-responsive img-thumbnail" width="1140"
+								 alt="{image.originalResource.properties.alternative}"
+						/>
+					</picture>
 				</a>
-		</td>
-	</tr>
-</table>
+			</f:for>
+		</div>
+	</f:if>
+	<hr/>
+	<f:if condition="{event.documents}">
+
+		<div class="row">
+			<h2>Dateien:</h2>
+			<f:for each="{event.documents}" as="documents">
+
+				<a href="{documents.originalResource.publicUrl}">
+					<i class="fa fa-file" aria-hidden="true"></i>
+					{documents.originalResource.name}
+				</a>
+			</f:for>
+		</div>
+	</f:if>
+
+	<hr />
+
+
+</f:section>
+</body>
+</html>
+
+
+<!--<table class="tx-ot-events" xmlns:f="http://www.w3.org/1999/html">-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.title" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.title}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.subtitle" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.subtitle}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.path_segment" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.pathSegment}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.event_date_time_start" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.eventDateTimeStart -> f:format.date()}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.event_date_time_stop" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.eventDateTimeStop -> f:format.date()}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.is_top_event" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.isTopEvent}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.teaser" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.teaser}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.bodytext" />-->
+<!--</td>-->
+<!--<td>-->
+<!--{event.bodytext}-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.preview_image" />-->
+<!--</td>-->
+<!--<td>-->
+<!--<f:if condition="{event.previewImage}">-->
+<!--<f:then>-->
+<!--<f:image src="{event.previewImage.originalResource.publicUrl}" class="img-responsive" width="200"/>-->
+<!--</f:then>-->
+<!--<f:else>-->
+<!--&lt;!&ndash;<f:translate key="events_images_not_found" />&ndash;&gt;-->
+<!--</f:else>-->
+<!--</f:if>-->
+
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.images" />-->
+<!--</td>-->
+<!--<td>-->
+<!--<f:for each="{event.images}" as="image">-->
+<!--<f:image src="{image.originalResource.publicUrl}" width="200"/>-->
+<!--</f:for>-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<f:translate key="tx_otevents_domain_model_event.documents" />-->
+<!--</td>-->
+<!--<td>-->
+<!--<f:for each="{event.documents}" as="documents">-->
+<!--<a href="{documents.originalResource.publicUrl}">-->
+<!--{event.documents.originalResource.name}-->
+<!--</a>-->
+<!--</f:for>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->

@@ -27,6 +27,7 @@ namespace OliverThiele\OtEvents\Controller;
  ***************************************************************/
 
 use OliverThiele\OtEvents\Domain\Model\Event;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -45,6 +46,14 @@ class EventController extends ActionController
     protected $eventRepository = NULL;
 
     /**
+     * eventRepository
+     *
+     * @var \OliverThiele\OtEvents\Domain\Repository\EventCategoryRepository
+     * @inject
+     */
+    protected $eventCategoryRepository = NULL;
+
+    /**
      *
      */
     protected function initializeAction()
@@ -56,7 +65,7 @@ class EventController extends ActionController
         }
 
         //DebuggerUtility::var_dump($this->settings,'$Settings');
-       // DebuggerUtility::var_dump($this->request,'$Request');
+       //DebuggerUtility::var_dump($this->request,'$Request');
 
     }  /**
      *
@@ -77,6 +86,9 @@ class EventController extends ActionController
     public function listAction()
     {
 
+
+        $eventCats = $this->eventCategoryRepository->findAll();
+        $this->view->assign('eventCategories', $eventCats);
 //        $newEvent = new Event();
 //        $newEvent->setTitle("Mein Event:". date('d.m.y H:i:s'));
 //        $now = new \DateTime();
@@ -91,6 +103,47 @@ class EventController extends ActionController
 
     }
 
+
+        /**
+         * Init listSearchResults action
+         */
+        protected function initializeListSearchResultsAction()
+    {
+        if ($this->request->hasArgument('eventCategory')) {
+
+            $eventCategory = $this->request->getArgument('eventCategory');
+
+            if (is_array($eventCategory)) {
+                if ($eventCategory['__identity'] == '') {
+                    $this->redirect('list');
+                }
+            } else {
+                if ($eventCategory == '') {
+                    $this->redirect('list');
+                }
+            }
+        } else {
+            $this->redirect('list');
+        }
+    }
+
+    /**
+     * @param Event $eventCategory
+     */
+    public function listSearchResultsAction(\OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategory){
+
+        $events = $this->eventRepository->findByEventCategories($eventCategory);
+        $this->view->assign('events', $events);
+
+        $eventCats = $this->eventCategoryRepository->findAll();
+        $this->view->assign('eventCategories', $eventCats);
+
+
+
+        $this->view->assign('eventCategory',$eventCategory);
+    }
+
+
     /**
      * action show
      *
@@ -99,6 +152,9 @@ class EventController extends ActionController
      */
     public function showAction(\OliverThiele\OtEvents\Domain\Model\Event $event)
     {
+
+
+        $GLOBALS['TSFE']->page['title'] = $event->getTitle();
         $this->view->assign('event', $event);
     }
 
@@ -162,5 +218,7 @@ class EventController extends ActionController
         $this->eventRepository->remove($event);
         $this->redirect('list');
     }
+
+
 
 }
