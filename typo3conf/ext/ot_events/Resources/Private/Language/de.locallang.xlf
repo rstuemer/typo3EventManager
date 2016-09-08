@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.0">
-	<file datatype="plaintext" date="2016-09-06T17:11:13Z" original="messages" product-name="ot_events" source-language="en">
+	<file datatype="plaintext" date="2016-09-06T17:11:13Z" original="messages" product-name="ot_events" source-language="en" target-language="de">
 		<header/>
 		<body>
 			<trans-unit id="tx_otevents_domain_model_event">
 				<source>Event</source>
+				<target>Veranstaltung</target>
 			</trans-unit>
 			<trans-unit id="tx_otevents_domain_model_event.title">
 				<source>Title</source>
@@ -75,11 +76,9 @@
 			<trans-unit id="tx_otevents_domain_model_eventcategory.parent_category">
 				<source>Parent Category</source>
 			</trans-unit>
-		<trans-unit id="no_events_found">
-                <source>No Events found.</source>
-            </trans-unit>
-        <trans-unit id="new_event_button">
-                <source>New Event</source>
+			<trans-unit id="no_events_found">
+				<source>No Events found.</source>
+                <target>Es wurde keine Veranstaltung gefunden.</target>
             </trans-unit>
         </body>
 	</file>

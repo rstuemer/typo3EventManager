@@ -4,6 +4,11 @@ plugin.tx_otevents_pi1 {
 		templateRootPaths.0 = {$plugin.tx_otevents_pi1.view.templateRootPath}
 		partialRootPaths.0 = {$plugin.tx_otevents_pi1.view.partialRootPath}
 		layoutRootPaths.0 = {$plugin.tx_otevents_pi1.view.layoutRootPath}
+		widget{
+			TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper{
+				templateRootPath = {$plugin.tx_otevents_pi1.view.templateRootPath}
+			}
+		}
 	}
 	persistence {
 		storagePid = {$plugin.tx_otevents_pi1.persistence.storagePid}

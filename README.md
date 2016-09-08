@@ -14,6 +14,7 @@ Pathsegment property für realURL
 
 SRIHash.org
 
+Stapelregister (Umgekehr Polnische Notation)
 
 Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext_emconf.php der orginalExtension aber höhere Versionsnummer und rest leer.
 
@@ -69,7 +70,13 @@ Um zu verhindern das andere Extensions geladen werden minimale Extension mit ext
 	-ext_emconf.php -> Add psr4 Autoloader   
 	```php
 		'autoload' => ['psr-4' => ['OliverThiele\\OtEvents\\'=> 'Classes']
-                                               ],
+		
+		
+	-Pagination Filtern Configuration > addQueryStringMenthod	
+    -Wenn Datenbank Feld hinzugefügt wird muss in Configuration/TCS/{tableFile} das Feld in Interface und einem der Types eingetragen werden.       
+    -Mit Palettes können mehrere Felder im Backend nebeneinnander dargestellt werden       
+           
+     Backend Extension wenn Anderes CSS etc. dann kann das über -> backend->layouts->default am Tag f:becontainer geladen werden                                           ],
 ## Einstellungen 
 		Installtool -> All Configuration 
 			-pageNotFoundOnCHashError rausnehmen (dann kann es aber sein das RealURL den alten CHash hat und damit die Seiten nicht gecacht werden )

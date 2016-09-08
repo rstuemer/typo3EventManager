@@ -55,8 +55,8 @@ class EventController extends ActionController
             $this->settings['displayList']['singlePid'] =$this->settings['flexForm']['singlePid'];
         }
 
-        DebuggerUtility::var_dump($this->settings,'$Settings');
-        DebuggerUtility::var_dump($this->request,'$Request');
+        //DebuggerUtility::var_dump($this->settings,'$Settings');
+       // DebuggerUtility::var_dump($this->request,'$Request');
 
     }  /**
      *
@@ -87,7 +87,7 @@ class EventController extends ActionController
 
         $events = $this->eventRepository->findAll();
         $this->view->assign('events', $events);
-        DebuggerUtility::var_dump($events,'$events');
+        //DebuggerUtility::var_dump($events,'$events');
 
     }
 
