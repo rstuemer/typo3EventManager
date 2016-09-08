@@ -33,5 +33,11 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class EventRepository extends Repository
 {
 
-
+    public function findByEventCategories(\OliverThiele\OtEvents\Domain\Model\EventCategory $eventCategory)
+    {
+        $query = $this->createQuery();
+        $query->matching($query->contains('eventCategories', $eventCategory));
+        $result = $query->execute();
+        return $result;
+    }
 }
